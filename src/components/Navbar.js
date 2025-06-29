@@ -1,66 +1,117 @@
-// Navbar.js
 import React from 'react';
-import { AppBar, Toolbar, Typography, IconButton, Badge, InputBase, Box, Paper } from '@mui/material';
-import { NotificationsNone, AttachMoney, Tune, Search } from '@mui/icons-material';
+import {
+  Box,
+  Typography,
+  IconButton,
+  Paper,
+  InputBase
+} from '@mui/material';
+import {
+  NotificationsNone,
+  AttachMoney,
+  Tune,
+  Search,
+  FavoriteBorder
+} from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({
+  title = 'Farmers',
+  showSearch = true,
+  showWallet = true,
+  showNotifications = true,
+  showFilter = true,
+  showHeart = false,
+}) => {
+  const navigate = useNavigate();
   return (
-    <AppBar position="static" color="transparent" elevation={0}>
-      <Toolbar sx={{ justifyContent: 'space-between', px: 2, pt: 1 }}>
-        {/* Left: Title */}
-        <Typography variant="h6" component="div" sx={{ fontWeight: 600, color: "#007E2F" }}>
-          Farmers
+    <Box
+      sx={{
+        px: 2,
+        py: 1.5,
+        bgcolor: '#fff',
+        position: 'sticky',
+        top: 0,
+        zIndex: 10,
+      }}
+    >
+      {/* 🔝 Top Row */}
+      <Box display="flex" justifyContent="space-between" alignItems="center" mb={showSearch ? 1 : 0}>
+        <Typography variant="h6" fontWeight={600} color="green">
+          {title}
         </Typography>
 
-        {/* Right Icons */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Box display="flex" alignItems="center" gap={1}>
+          {showWallet && (
+            <Paper
+              elevation={0}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                px: 1,
+                py: 0.5,
+                borderRadius: 3,
+                bgcolor: '#eaf7e7',
+                gap: 0.5,
+              }}
+            >
+              <AttachMoney sx={{ color: 'green', fontSize: 20 }} />
+              <Typography variant="body2" fontWeight={600}>50</Typography>
+            </Paper>
+          )}
+
+          {showNotifications && (
+            <IconButton size="small" sx={{ bgcolor: '#f3f8f2' }}>
+              <NotificationsNone sx={{ color: 'green' }} />
+            </IconButton>
+          )}
+
+          {showHeart && (
+            <IconButton
+              size="small"
+              sx={{ bgcolor: '#f3f8f2' }}
+              onClick={() => navigate('/favorites')} // ← Navigate on click
+            >
+              <FavoriteBorder sx={{ color: 'green' }} />
+            </IconButton>
+          )}
+
+
+          {showFilter && !showSearch && (
+            <IconButton size="small" sx={{ bgcolor: '#f3f8f2' }}>
+              <Tune sx={{ color: 'green' }} />
+            </IconButton>
+          )}
+        </Box>
+      </Box>
+
+      {/* 🔍 Search Row */}
+      {showSearch && (
+        <Box display="flex" alignItems="center" gap={1}>
           <Paper
             elevation={0}
             sx={{
+              flex: 1,
               display: 'flex',
               alignItems: 'center',
-              px: 1,
+              px: 2,
               py: 0.5,
-              borderRadius: 4,
-              backgroundColor: '#eaf7e7',
-              gap: 0.5,
+              borderRadius: 8,
+              bgcolor: '#f5f5f5',
             }}
           >
-            <AttachMoney sx={{ color: 'green', fontSize: 20 }} />
-            <Typography variant="body2" sx={{ fontWeight: 500 }}>
-              50
-            </Typography>
+            <Search sx={{ color: 'gray' }} />
+            <InputBase placeholder="Search.." sx={{ ml: 1, flex: 1 }} />
           </Paper>
 
-          <IconButton size="small" sx={{ backgroundColor: '#f3f8f2' }}>
-            <NotificationsNone sx={{ color: 'green' }} />
-          </IconButton>
+          {showFilter && (
+            <IconButton sx={{ bgcolor: '#e8f5e9' }}>
+              <Tune sx={{ color: 'green' }} />
+            </IconButton>
+          )}
         </Box>
-      </Toolbar>
-
-      {/* Search + Filter Row */}
-      <Box sx={{ px: 2, pb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
-        <Paper
-          elevation={0}
-          sx={{
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            px: 2,
-            py: 0.5,
-            borderRadius: 8,
-            backgroundColor: '#f5f5f5',
-          }}
-        >
-          <Search sx={{ color: 'gray' }} />
-          <InputBase placeholder="Search.." sx={{ ml: 1, flex: 1 }} />
-        </Paper>
-
-        <IconButton sx={{ backgroundColor: '#e8f5e9' }}>
-          <Tune sx={{ color: 'green' }} />
-        </IconButton>
-      </Box>
-    </AppBar>
+      )}
+    </Box>
   );
 };
 

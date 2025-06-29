@@ -1,11 +1,10 @@
-import React from 'react';
 import {
   Box,
   Container
 } from '@mui/material';
 import Slider from 'react-slick';
 import Navbar from '../components/Navbar';
-import Categories from './Categories'; 
+import Categories from './Categories';
 import Product from './Products';
 
 import "slick-carousel/slick/slick.css";
@@ -34,7 +33,14 @@ const sliderSettings = {
 const Home = () => {
   return (
     <Box>
-      <Navbar />
+      <Navbar
+        title="Farmers"
+        showSearch={true}
+        showWallet={true}
+        showNotifications={true}
+        showFilter={true}
+      />
+
 
       <Container maxWidth="sm" sx={{ py: 2 }}>
         {/* 🔁 Promo Banner Slider */}
