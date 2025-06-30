@@ -2,10 +2,10 @@ import React from 'react';
 import { Box, Typography, Stack } from '@mui/material';
 
 const categories = [
-  { name: 'Fruits' },
-  { name: 'Grains' },
-  { name: 'Herbs' },
-  { name: 'Vegetables' },
+  { name: 'Cultivation' },
+  { name: 'Planting' },
+  { name: 'Spraying' },
+  { name: 'Harvesting' },
 ];
 
 const Categories = () => {

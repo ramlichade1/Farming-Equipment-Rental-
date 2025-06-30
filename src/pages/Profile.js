@@ -29,9 +29,25 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const handleNavigation = (label) => {
-    if (label === 'About me') navigate('/about');
-    else if (label === 'My Favorites') navigate('/favorites');
-    else if (label === 'My Orders') navigate('/my-orders');
+    switch (label) {
+      case 'About me':
+        navigate('/about');
+        break;
+      case 'My Favorites':
+        navigate('/favorites');
+        break;
+      case 'My Orders':
+        navigate('/my-orders');
+        break;
+      case 'My Address':
+        navigate('/my-address');
+        break;
+      case 'Notifications':
+        navigate('/notifications');
+        break;
+      default:
+        break;
+    }
   };
 
   const menuItems = [
@@ -39,15 +55,13 @@ const Profile = () => {
     { icon: <ShoppingBag />, label: 'My Orders' },
     { icon: <Favorite />, label: 'My Favorites' },
     { icon: <LocationOn />, label: 'My Address' },
-    { icon: <CreditCard />, label: 'Credit Cards' },
-    { icon: <ReceiptLong />, label: 'Transactions' },
     { icon: <Notifications />, label: 'Notifications' },
     { icon: <Logout />, label: 'Sign out' },
   ];
 
   return (
-    <Box sx={{ bgcolor: '#F4F5F9', minHeight: '100vh', pb: 10 }}>
-      {/* White Top Curve Background */}
+    <Box sx={{ bgcolor: '#F4F5F9', minHeight: '100vh', pb: 9 }}>
+      {/* Top White Half-Circle */}
       <Box
         sx={{
           bgcolor: 'white',
@@ -66,6 +80,7 @@ const Profile = () => {
             textAlign: 'center',
           }}
         >
+          {/* Profile Avatar + Camera Icon */}
           <Box sx={{ position: 'relative', display: 'inline-block' }}>
             <Avatar alt="Olivia Austin" src="" sx={{ width: 100, height: 100 }} />
             <IconButton
@@ -82,6 +97,7 @@ const Profile = () => {
               <CameraAlt sx={{ fontSize: 16 }} />
             </IconButton>
           </Box>
+          {/* Name & Email */}
           <Typography fontWeight={600} mt={1}>
             Olivia Austin
           </Typography>
@@ -91,15 +107,11 @@ const Profile = () => {
         </Box>
       </Box>
 
-      {/* Menu List */}
+      {/* Profile Menu Options */}
       <Box sx={{ px: 2, mt: 8 }}>
-        <List sx={{ bgcolor: '#F4F5F9' }}>
+        <List>
           {menuItems.map((item, idx) => (
-            <ListItem
-              key={idx}
-              button
-              onClick={() => handleNavigation(item.label)}
-            >
+            <ListItem key={idx} button onClick={() => handleNavigation(item.label)}>
               <ListItemIcon sx={{ color: '#007E2F' }}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.label} />
               <ListItemSecondaryAction>
@@ -110,6 +122,7 @@ const Profile = () => {
         </List>
       </Box>
 
+      {/* Bottom Navigation */}
       <BottomNav />
     </Box>
   );

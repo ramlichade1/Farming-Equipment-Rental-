@@ -21,7 +21,6 @@ const Explore = () => {
 
             {/* Page Content */}
             <Container maxWidth="sm" sx={{ pt: 2 }}>
-
                 {/* Categories */}
                 <Categories />
 

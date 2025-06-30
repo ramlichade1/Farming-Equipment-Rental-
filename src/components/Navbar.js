@@ -61,10 +61,15 @@ const Navbar = ({
           )}
 
           {showNotifications && (
-            <IconButton size="small" sx={{ bgcolor: '#f3f8f2' }}>
+            <IconButton
+              size="small"
+              sx={{ bgcolor: '#f3f8f2' }}
+              onClick={() => navigate('/notifications')} // ← Add this line
+            >
               <NotificationsNone sx={{ color: 'green' }} />
             </IconButton>
           )}
+
 
           {showHeart && (
             <IconButton
@@ -78,7 +83,7 @@ const Navbar = ({
 
 
           {showFilter && !showSearch && (
-            <IconButton size="small" sx={{ bgcolor: '#f3f8f2' }}>
+            <IconButton size="small" sx={{ bgcolor: '#f3f8f2' }} onClick={() => navigate('/apply-filters')}>
               <Tune sx={{ color: 'green' }} />
             </IconButton>
           )}

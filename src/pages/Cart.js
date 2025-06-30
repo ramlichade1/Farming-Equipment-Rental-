@@ -1,132 +1,121 @@
+import React from 'react';
 import {
   Box,
   Typography,
-  Button,
-  Card,
-  CardContent,
   IconButton,
+  Button,
   Divider,
-  Paper
 } from '@mui/material';
-import { Add, Remove, ExpandMore } from '@mui/icons-material';
+import {
+  Add,
+  Remove,
+  Delete,
+  ArrowBack,
+} from '@mui/icons-material';
 import BottomNav from '../components/BottomNav';
+
+const cartItems = [
+  { id: 1, name: 'Fresh Broccoli', qty: 5, price: '$2.22 x 4', unit: '1.50 lbs' },
+  { id: 2, name: 'Black Grapes', qty: 5, price: '$2.22 x 4', unit: '5.0 lbs', deletable: true },
+  { id: 3, name: 'Avacoda', qty: 5, price: '$2.22 x 4', unit: '1.50 lbs' },
+  { id: 4, name: 'Pineapple', qty: 5, price: '$2.22 x 4', unit: 'dozen' },
+];
 
 const Cart = () => {
   return (
-    <Box sx={{ p: 2 }}>
-      
-      {/* 🛒 Cart Item */}
-      <Card sx={{ mb: 2, borderRadius: 3 }}>
-        <CardContent>
-          <Box display="flex" justifyContent="space-between" alignItems="center">
-            <Typography fontWeight={600}>Pomegranate</Typography>
-            <Typography fontWeight={600} sx={{ color: '#007E2F' }}>₹100</Typography>
-          </Box>
-
-          <Button size="small" sx={{ mt: 1 }} variant="text" sx={{ color: '#007E2F' }}>
-            Add more items
-          </Button>
-
-          <Box
-            sx={{
-              mt: 1.5,
-              display: 'flex',
-              alignItems: 'center',
-              gap: 1,
-              justifyContent: 'flex-end'
-            }}
-          >
-            <IconButton size="small" sx={{ bgcolor: '#eaf7e7' }}>
-              <Remove fontSize="small" sx={{ color: '#007E2F' }} />
-            </IconButton>
-            <Typography>1</Typography>
-            <IconButton size="small" sx={{ bgcolor: '#eaf7e7' }}>
-              <Add fontSize="small" sx={{ color: '#007E2F' }} />
-            </IconButton>
-          </Box>
-        </CardContent>
-      </Card>
-
-      {/* 🧾 Apply Coupon */}
-      <Paper sx={{ p: 2, mb: 2, borderRadius: 3, cursor: 'pointer' }}>
-        <Typography sx={{ color: '#007E2F', fontWeight: 500 }}>
-          Apply Coupon
-        </Typography>
-      </Paper>
-
-      {/* 📦 Invoice Section */}
-      <Paper sx={{ p: 2, mb: 2, borderRadius: 3 }}>
-        <Typography fontWeight={600} mb={1}>Invoice</Typography>
-        <Box display="flex" justifyContent="space-between">
-          <Typography>Original Price</Typography>
-          <Typography>₹100</Typography>
-        </Box>
-        <Box display="flex" justifyContent="space-between">
-          <Typography>Delivery</Typography>
-          <Typography color="error">+40</Typography>
-        </Box>
-        <Box display="flex" justifyContent="space-between">
-          <Typography>GST</Typography>
-          <Typography color="error">+18</Typography>
-        </Box>
-        <Box display="flex" justifyContent="space-between">
-          <Typography>Discount</Typography>
-          <Typography sx={{ color: '#007E2F' }}>-20</Typography>
-        </Box>
-        <Divider sx={{ my: 1 }} />
-        <Box display="flex" justifyContent="space-between">
-          <Typography fontWeight={600}>Total</Typography>
-          <Typography fontWeight={600} sx={{ color: '#007E2F' }}>₹138</Typography>
-        </Box>
-      </Paper>
-
-      {/* 🚚 Shipping Details */}
-      <Box sx={{ mb: 2 }}>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-          <Typography fontWeight={600}>Shipping Details</Typography>
-          <Typography fontSize={14} fontWeight={500} sx={{ color: '#007E2F', cursor: 'pointer' }}>
-            Edit
-          </Typography>
-        </Box>
-        <Paper sx={{ p: 2, borderRadius: 3 }}>
-          <Box display="flex" justifyContent="space-between" alignItems="center">
-            <Typography fontWeight={600}>Michael Miller</Typography>
-            <Box display="flex" alignItems="center" gap={0.5}>
-              <Typography fontSize={14} sx={{ color: '#007E2F' }}>Home</Typography>
-              <ExpandMore fontSize="small" />
-            </Box>
-          </Box>
-          <Typography fontSize={14} sx={{ mt: 0.5 }}>
-            70 Washington Square South, New York, NY 10012, United States
-          </Typography>
-          <Typography fontSize={14} sx={{ mt: 0.5 }}>
-            +91 12345 67890
-          </Typography>
-        </Paper>
+    <Box sx={{ bgcolor: '#F4F5F9', minHeight: '100vh', pb: 10 }}>
+      {/* Header */}
+      <Box sx={{ display: 'flex', alignItems: 'center', px: 2, py: 1 }}>
+        <IconButton><ArrowBack /></IconButton>
+        <Typography variant="h6" fontWeight={600} ml={11}>Shopping Cart</Typography>
       </Box>
 
-      {/* 📝 Delivery Instructions */}
-      <Paper sx={{ p: 2, mb: 2, borderRadius: 3, cursor: 'pointer' }}>
-        <Typography sx={{ color: '#007E2F', fontWeight: 500 }}>
-          Add Delivery Instructions
-        </Typography>
-      </Paper>
+      {/* Cart Items */}
+      <Box sx={{ px: 2 }}>
+        {cartItems.map((item) => (
+          <Box
+            key={item.id}
+            sx={{
+              bgcolor: '#fff',
+              borderRadius: 2,
+              p: 2,
+              mb: 2,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <Box
+                sx={{
+                  width: 50,
+                  height: 50,
+                  bgcolor: '#ddd',
+                  borderRadius: 2,
+                }}
+              />
+              <Box>
+                <Typography variant="caption" color="#007E2F">
+                  {item.price}
+                </Typography>
+                <Typography fontWeight={600}>{item.name}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {item.unit}
+                </Typography>
+              </Box>
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              {item.deletable ? (
+                <IconButton sx={{ bgcolor: '#f44336', color: 'white' }}>
+                  <Delete />
+                </IconButton>
+              ) : (
+                <>
+                  <IconButton size="small" sx={{ color: '#007E2F' }}>
+                    <Add />
+                  </IconButton>
+                  <Typography>{item.qty}</Typography>
+                  <IconButton size="small" sx={{ color: '#007E2F' }}>
+                    <Remove />
+                  </IconButton>
+                </>
+              )}
+            </Box>
+          </Box>
+        ))}
+      </Box>
 
-      {/* ✅ Proceed Button */}
-      <Button
-        fullWidth
-        sx={{
-          borderRadius: 999,
-          py: 1.3,
-          backgroundColor: '#007E2F',
-          color: '#fff',
-          '&:hover': {
-            backgroundColor: '#006a29',
-          }
-        }}
-      >
-        Proceed to Checkout
-      </Button>
+      {/* Totals */}
+      <Box sx={{ px: 2, pt: 2, bgcolor: '#fff', borderTopLeftRadius: 20, borderTopRightRadius: 20, mt: 18 }}>
+        <Box display="flex" justifyContent="space-between" mb={1}>
+          <Typography color="text.secondary">Subtotal</Typography>
+          <Typography>$56.7</Typography>
+        </Box>
+        <Box display="flex" justifyContent="space-between" mb={1}>
+          <Typography color="text.secondary">Shipping charges</Typography>
+          <Typography>$1.5</Typography>
+        </Box>
+        <Divider sx={{ my: 1 }} />
+        <Box display="flex" justifyContent="space-between" mb={2}>
+          <Typography fontWeight={600}>Total</Typography>
+          <Typography fontWeight={600}>$58.2</Typography>
+        </Box>
+
+        <Button
+          fullWidth
+          variant="contained"
+          sx={{
+            background: 'linear-gradient(to right, #A4E057, #00B84C)',
+            color: '#fff',
+            borderRadius: 2,
+            textTransform: 'none',
+            mb: 2,
+          }}
+        >
+          Checkout
+        </Button>
+      </Box>
+
       <BottomNav />
     </Box>
   );

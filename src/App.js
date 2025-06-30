@@ -9,7 +9,12 @@ import Explore from './pages/Explore';
 import Favorites from "./pages/Favorites";
 import Profile from "./pages/Profile";
 import AboutMe from "./pages/AboutMe";
-import Order from "./pages/MyOrder"
+import Order from "./pages/MyOrder";
+import Notifications from "./pages/Notifications";
+import MyAddress from "./pages/MyAddress";
+import AddAddress from "./pages/AddAddress";
+import ApplyFilters from "./pages/ApplyFilters";
+import OrderSuccess from "./pages/OrderSuccess";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,6 +31,11 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/about" element={<AboutMe />} />
         <Route path="/my-orders" element={<Order />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="/my-address" element={<MyAddress />} />
+        <Route path="/add-address" element={<AddAddress />} />
+        <Route path="/apply-filters" element={<ApplyFilters />} />
+        <Route path="/order-success" element={<OrderSuccess />} />
       </Routes>
 
       {/* ✅ Show BottomNav only if logged in */}
