@@ -1,8 +1,8 @@
 import { Box, Container } from '@mui/material';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/layout/Navbar';
 import Categories from './Categories';
 import Product from './Products';
-import BottomNav from '../components/BottomNav';
+import BottomNav from '../components/common/BottomNav';
 import promoImage from '../assets/ExploreImg.jpg';
 
 const Explore = () => {

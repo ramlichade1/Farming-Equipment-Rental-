@@ -3,13 +3,13 @@ import {
   Container
 } from '@mui/material';
 import Slider from 'react-slick';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/layout/Navbar';
 import Categories from './Categories';
 import Product from './Products';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import BottomNav from '../components/BottomNav';
+import BottomNav from '../components/common/BottomNav';
 
 const carouselImages = [
   require('../assets/home-page1.jpg'),

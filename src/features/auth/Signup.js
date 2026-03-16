@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Button, TextField, Typography, Alert, Link } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { validateUser } from "../utils/auth";
+import { validateUser } from "../../utils/auth";
 
 const Signup = ({ setIsLoggedIn }) => {
   const {
@@ -47,7 +47,7 @@ const Signup = ({ setIsLoggedIn }) => {
       justifyContent="center"
       alignItems="center"
       sx={{
-        backgroundImage: `url(${require("../assets/riceimg.jpg")})`,
+        backgroundImage: `url(${require("../../assets/riceimg.jpg")})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

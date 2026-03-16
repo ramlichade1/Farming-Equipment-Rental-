@@ -9,7 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import BottomNav from '../components/BottomNav';
+import BottomNav from "../../components/common/BottomNav";
 import { useNavigate } from 'react-router-dom';
 
 const favoriteItems = [

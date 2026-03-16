@@ -12,7 +12,7 @@ import {
   Delete,
   ArrowBack,
 } from '@mui/icons-material';
-import BottomNav from '../components/BottomNav';
+import BottomNav from '../components/common/BottomNav';
 
 const cartItems = [
   { id: 1, name: 'Fresh Broccoli', qty: 5, price: '$2.22 x 4', unit: '1.50 lbs' },
