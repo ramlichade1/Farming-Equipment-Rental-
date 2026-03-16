@@ -32,7 +32,12 @@ const sliderSettings = {
 
 const Home = () => {
   return (
-    <Box>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        bgcolor: '#f8f9fa'
+      }}
+    >
       <Navbar
         title="Farmers"
         showSearch={true}
@@ -41,19 +46,40 @@ const Home = () => {
         showFilter={true}
       />
 
-
-      <Container maxWidth="sm" sx={{ py: 2 }}>
-        {/* 🔁 Promo Banner Slider */}
-        <Box sx={{ mb: 3 }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          py: 2,
+          px: {
+            xs: 1,
+            sm: 2,
+            md: 3
+          }
+        }}
+      >
+        {/* Promo Banner Slider */}
+        <Box
+          sx={{
+            mb: 3,
+            maxWidth: {
+              xs: '100%',
+              md: '900px'
+            },
+            mx: 'auto'
+          }}
+        >
           <Slider {...sliderSettings}>
             {carouselImages.map((img, idx) => (
               <Box
                 key={idx}
                 sx={{
                   width: '100%',
-                  height: 200,
+                  height: {
+                    xs: 200,
+                    md: 320
+                  },
                   borderRadius: 3,
-                  overflow: 'hidden',
+                  overflow: 'hidden'
                 }}
               >
                 <Box
@@ -63,7 +89,7 @@ const Home = () => {
                   sx={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover',
+                    objectFit: 'cover'
                   }}
                 />
               </Box>
@@ -71,9 +97,20 @@ const Home = () => {
           </Slider>
         </Box>
 
-        {/* 🟢 Categories Section */}
-        <Categories />
-        <Product />
+        {/* Categories + Products */}
+        <Box
+          sx={{
+            maxWidth: {
+              xs: '100%',
+              md: '1100px'
+            },
+            mx: 'auto'
+          }}
+        >
+          <Categories />
+          <Product />
+        </Box>
+
         <BottomNav />
       </Container>
     </Box>
