@@ -39,7 +39,7 @@ const Home = () => {
       }}
     >
       <Navbar
-        title="Farmers"
+        title="YuvaShetkari"
         showSearch={true}
         showWallet={true}
         showNotifications={true}

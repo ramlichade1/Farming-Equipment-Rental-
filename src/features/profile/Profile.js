@@ -24,6 +24,8 @@ import {
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import BottomNav from "../../components/common/BottomNav";
+import Agriculture from '@mui/icons-material/Agriculture';
+import AddCircleOutline from '@mui/icons-material/AddCircleOutline';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -45,6 +47,12 @@ const Profile = () => {
       case 'Notifications':
         navigate('/notifications');
         break;
+      case 'My Equipments':
+        navigate('/my-equipments');
+        break;
+      case 'Add Equipment':
+        navigate('/add-equipment');
+        break;
       default:
         break;
     }
@@ -56,6 +64,8 @@ const Profile = () => {
     { icon: <Favorite />, label: 'My Favorites' },
     { icon: <LocationOn />, label: 'My Address' },
     { icon: <Notifications />, label: 'Notifications' },
+    { icon: <Agriculture />, label: 'My Equipments' },
+    { icon: <AddCircleOutline />, label: 'Add Equipment' },
     { icon: <Logout />, label: 'Sign out' },
   ];
 

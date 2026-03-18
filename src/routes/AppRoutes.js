@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import Login from "../features/auth/Signup";
+import Login from "../features/auth/Login";
 import Home from "../pages/Home";
 import Cart from "../pages/Cart";
 import Categories from "../pages/Categories";
@@ -14,6 +14,8 @@ import MyAddress from "../features/address/MyAddress";
 import AddAddress from "../features/address/AddAddress";
 import ApplyFilters from "../pages/ApplyFilters";
 import OrderSuccess from "../features/orders/OrderSuccess";
+import AddEquipment from '../features/equipment/AddEquipment';
+import Equipment from '../features/equipment/EquipmentForm';
 
 function AppRoutes({ setIsLoggedIn }) {
   return (
@@ -32,6 +34,8 @@ function AppRoutes({ setIsLoggedIn }) {
       <Route path="/add-address" element={<AddAddress />} />
       <Route path="/apply-filters" element={<ApplyFilters />} />
       <Route path="/order-success" element={<OrderSuccess />} />
+      <Route path="/add-equipment" element={<AddEquipment />} />
+      <Route path="/my-equipments" element={<Equipment />} />
     </Routes>
   );
 }
